@@ -1,0 +1,24 @@
+{
+  "name": "organization-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Volunteero/organization-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Volunteero/organization-service/issues"
+  },
+  "homepage": "https://github.com/Volunteero/organization-service#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongodb": "^3.0.6",
+    "mongoose": "^5.0.15"
+  }
+}
