@@ -1,12 +1,17 @@
 const express = require('express');
-const app = express();
-const port = process.env.PORT || 5656;
 const organizationRoutes = require('./routes/organization-router');
 
+const app = express();
+
+let env = process.env.NODE_ENV || 'development';
+
+let config = require('./config/env')[env];
+
+require('./config/database')(config);
 
 app.use('/organizations', organizationRoutes);
 
 
-app.listen(port, () => {
-    console.log(`http://localhost:${port}`)
+app.listen(config.port, () => {
+    console.log(`Listening to: http://localhost:${config.port}`)
 });
