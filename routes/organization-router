@@ -3,12 +3,8 @@ const organizationController = require('../controllers/organization-controller')
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-
-    res.send('test')
-});
-router.post('/', (req, res) => {
-    organizationController.create(req, res);
-});
+router.get('/', organizationController.getAll);
+router.get('/:organizationId', organizationController.getById);
+router.post('/', organizationController.create);
 
 module.exports = router;
