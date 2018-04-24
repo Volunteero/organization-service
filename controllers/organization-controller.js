@@ -52,7 +52,9 @@ module.exports = {
                 //     res.status(400).json("Nothing was updated. Check if the parameters are correct!");
                 // }
                 // else {
-                res.status(200).json(organization);
+                console.log(organization);
+
+                res.sendStatus(204);
                 // }
 
             }).catch((err) => {
