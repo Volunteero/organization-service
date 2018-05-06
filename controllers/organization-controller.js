@@ -16,6 +16,7 @@ module.exports = {
     },
     getAll: (req, res) => {
         Organization.find({}).then((organizations) => {
+            console.log("from gea all")
             res.status(200).json(organizations);
 
         }, err => {
@@ -43,7 +44,7 @@ module.exports = {
 
         Organization.findById(id).then((organization) => {
             // let oldOrganization = Object.assign({}, organization);
-
+            // :TODO make a check if nothing was updated
             organization.set(newValues);
             organization.save().then(() => {
 

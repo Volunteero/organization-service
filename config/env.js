@@ -4,7 +4,7 @@ module.exports = {
         port: 1337
     },
     production: {
-        db: process.env.MONGO_DB_CONN_STR,
+        db: "mongodb+srv://new-user_31:wildside@organizations-service-z2fzj.mongodb.net/organizations-db",
         port: process.env.port
     }
 };
