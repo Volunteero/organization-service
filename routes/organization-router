@@ -1,0 +1,16 @@
+const express = require('express');
+const organizationController = require('../controllers/organization-controller');
+
+const router = express.Router();
+
+
+router.get('/', organizationController.getAll);
+
+router.get('/:organizationId', organizationController.getById);
+
+router.post('/', organizationController.create);
+
+router.patch('/:organizationId', organizationController.update);
+
+
+module.exports = router;
