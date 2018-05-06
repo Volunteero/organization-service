@@ -5,6 +5,6 @@ module.exports = {
     },
     production: {
         db: "mongodb+srv://new-user_31:wildside@organizations-service-z2fzj.mongodb.net/organizations-db",
-        port: process.env.port
+        port: process.env.PORT
     }
 };
