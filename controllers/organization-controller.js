@@ -16,6 +16,7 @@ module.exports = {
     },
     getAll: (req, res) => {
         Organization.find({}).then((organizations) => {
+            console.log("from gea all")
             res.status(200).json(organizations);
 
         }, err => {
