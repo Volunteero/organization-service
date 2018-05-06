@@ -43,7 +43,7 @@ module.exports = {
 
         Organization.findById(id).then((organization) => {
             // let oldOrganization = Object.assign({}, organization);
-
+            // :TODO make a check if nothing was updated
             organization.set(newValues);
             organization.save().then(() => {
 
