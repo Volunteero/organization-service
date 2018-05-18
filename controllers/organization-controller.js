@@ -1,4 +1,5 @@
 const Organization = require('../models/Organization');
+const authController = require('../controllers/auth-controller');
 
 
 module.exports = {
@@ -6,13 +7,21 @@ module.exports = {
         let organization = req.body;
 
 
-        Organization.create(organization).then(() => {
+        Organization.create(organization).then((newOrganization) => {
             // When organization is created successfully
+
+
+            let id = newOrganization._id;
+            let username = "accessKey"; // retrieve it form the token somehow
+            result = authController.createRole(id, username);
+
+
             res.sendStatus(201);
+
 
         }, (err) => {
             res.status(400).json(err.message);
-        })
+        });
     },
     getAll: (req, res) => {
         Organization.find({}).then((organizations) => {
