@@ -19,8 +19,15 @@ module.exports = {
             return data.toString('utf8');
         });
     },
-    isAuthorized: () => {
+    isAuthorizedToUpdate: (req, res, next) => {
+        client.get("https://volunteero-auth.herokuapp.com/auth/access?accessToken=accessKey&resource=updateOrganization", (data, response) => {
 
+            if (response) {
+                next();
+            } else {
+                res.sendStatus(403);
+            }
+
+        });
     }
-
 };
