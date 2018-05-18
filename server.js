@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const organizationRoutes = require('./routes/organization-router');
 
 const app = express();
@@ -10,6 +11,9 @@ let config = require('./config/env')[env];
 
 
 require('./config/database')(config);
+
+// Enable cors
+app.use(cors());
 
 // Setup body parser
 app.use(bodyParser.urlencoded({extended: true}));
