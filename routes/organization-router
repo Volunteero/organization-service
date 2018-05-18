@@ -12,5 +12,6 @@ router.post('/', organizationController.create);
 
 router.patch('/:organizationId', organizationController.update);
 
+router.delete('/:organizationId', organizationController.delete);
 
 module.exports = router;

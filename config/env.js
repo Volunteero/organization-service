@@ -4,7 +4,7 @@ module.exports = {
         port: 1337
     },
     production: {
-        db: "mongodb+srv://new-user_31:wildside@organizations-service-z2fzj.mongodb.net/organizations-db",
+        db: process.env.DB_ATLAS, // var configured on heroku
         port: process.env.PORT
     }
 };

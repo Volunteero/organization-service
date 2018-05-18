@@ -16,7 +16,7 @@ module.exports = {
     },
     getAll: (req, res) => {
         Organization.find({}).then((organizations) => {
-            console.log("from gea all")
+
             res.status(200).json(organizations);
 
         }, err => {
@@ -65,6 +65,21 @@ module.exports = {
 
         }).catch((err) => {
             res.sendStatus(404);
+        })
+    },
+    delete: (req, res) => {
+        let id = req.params.organizationId;
+
+        Organization.deleteOne({_id: id}).then((err) => {
+
+            if (err.n === 0) {
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(204);
+            }
+
+        }).catch((err) => {
+            res.sendStatus(500);
         })
     }
 
