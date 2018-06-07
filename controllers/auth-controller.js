@@ -21,7 +21,10 @@ module.exports = {
         });
     },
     isAuthorizedToUpdate: (req, res, next) => {
-        client.get("https://volunteero-auth.herokuapp.com/auth/access?accessToken=accessKey&resource=updateOrganization", (data, response) => {
+
+        let token = getToken(req);
+
+        client.get("https://volunteero-auth.herokuapp.com/auth/access?accessToken=" + token + "&resource=updateOrganization", (data, response) => {
 
             if (response) {
                 next();
@@ -30,6 +33,19 @@ module.exports = {
             }
 
         });
+    }, isAuthorizedToDelete: (req, res, next) => {
+
+        let token = getToken(req);
+
+        client.delete("https://volunteero-auth.herokuapp.com/auth/access?accessToken=" + token + "&resource=deleteOrganization", (data, response) => {
+
+            if (response) {
+                next();
+            } else {
+                res.sendStatus(403);
+            }
+        });
+
     }, jwt: (req, res, next) => {
         let token = getToken(req);
 
@@ -37,9 +53,7 @@ module.exports = {
             jwt({token, secret});
             console.log("called");
         }
-
         next();
-
     }
 
 
