@@ -9,7 +9,7 @@ router.get('/', organizationController.getAll);
 
 router.get('/:organizationId', organizationController.getById);
 
-router.post('/', organizationController.create);
+router.post('/', authController.jwt, organizationController.create);
 
 router.patch('/:organizationId', organizationController.update);
 

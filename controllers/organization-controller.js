@@ -4,24 +4,31 @@ const authController = require('../controllers/auth-controller');
 
 module.exports = {
     create: (req, res) => {
+
         let organization = req.body;
 
-
         Organization.create(organization).then((newOrganization) => {
+
+
             // When organization is created successfully
-
-
             let id = newOrganization._id;
-            let username = "accessKey"; // retrieve it form the token somehow
-            result = authController.createRole(id, username);
 
+            let username = req.user; //.username
+            console.log(username);
 
-            res.sendStatus(201);
+            return Promise.resolve({id, username});
 
+        }).then((roleData) => {
 
-        }, (err) => {
+            authController.createRole(roleData.id, roleData.username);
+
+            res.status(201).send("Organization created and role is set");
+
+        }).catch((err) => {
+
             res.status(400).json(err.message);
-        });
+
+        })
     },
     getAll: (req, res) => {
         Organization.find({}).then((organizations) => {
