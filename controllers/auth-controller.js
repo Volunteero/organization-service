@@ -8,15 +8,22 @@ module.exports = {
 
     createRole: (organisationId, username) => {
 
+        console.log(organisationId);
+        console.log(username);
+
         let args = {
-            data: {organisationId: organisationId, username: username}
+            data: {organisationId: organisationId, username: username},
+            headers: { "Content-Type": "application/json" }
 
         };
-        client.post("https://volunteero-auth.herokuapp.com/internal/organizations/createRole?accessKey=root&secretAccessKey=password", args, (data, response) => {
+        client.post("https://volunteero-auth.herokuapp.com/internal/organisations/createRole?accessKey=root&secretAccessKey=password", args, (data, response) => {
 
-            // console.log('DATA');
+            console.log('DATA');
             // console.log(data.toString('utf8'));
+            console.log(data);
+            // console.log('RESPONSE');
 
+            // console.log(response);
             return data.toString('utf8');
         });
     },
