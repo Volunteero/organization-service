@@ -7,6 +7,6 @@ const PUBLIC_KEY = 'LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJDZ0tDQVFFQWs5
     'FEekFEUDZtUEU2YXdJREFRQUIKLS0tLS1FTkQgUlNBIFBVQkxJQyBLRVktLS0tLQo=';
 
 module.exports = {
-    secret: new Buffer(PUBLIC_KEY, 'base64')
+    secret: Buffer.from(PUBLIC_KEY, 'base64')
 };
 

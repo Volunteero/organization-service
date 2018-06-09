@@ -46,15 +46,9 @@ module.exports = {
             }
         });
 
-    }, jwt: (req, res, next) => {
-        let token = getToken(req);
-
-        if (token !== null) {
-            jwt({token, secret});
-            console.log("called");
-        }
-        next();
-    }
-
+    }, jwt: jwt({
+        getToken,
+        secret
+    })
 
 };
