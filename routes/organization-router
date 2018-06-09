@@ -9,10 +9,10 @@ router.get('/', organizationController.getAll);
 
 router.get('/:organizationId', organizationController.getById);
 
-router.post('/', organizationController.create);
+router.post('/', authController.jwt, organizationController.create);
 
-router.patch('/:organizationId', organizationController.update);
+router.patch('/:organizationId', authController.isAuthorizedToUpdate, organizationController.update);
 
-router.delete('/:organizationId', organizationController.delete);
+router.delete('/:organizationId', authController.isAuthorizedToDelete, organizationController.delete);
 
 module.exports = router;
