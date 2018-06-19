@@ -13,8 +13,7 @@ module.exports = {
             // When organization is created successfully
             let id = newOrganization._id;
 
-            let username = req.user; //.username
-            console.log(username);
+            let username = req.user.username;
 
             return Promise.resolve({id, username});
 
