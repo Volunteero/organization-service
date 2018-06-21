@@ -19,9 +19,10 @@ module.exports = {
 
         }).then((roleData) => {
 
+            // ToDo: make validation here
             authController.createRole(roleData.id, roleData.username);
 
-            res.status(201).send("Organization created and role is set");
+            res.status(201).json({'organization_id': roleData.id});
 
         }).catch((err) => {
 
