@@ -52,8 +52,6 @@ module.exports = {
         })
     },
     update: (req, res) => {
-
-
         Organization.findById(id).then((organization) => {
             // let oldOrganization = Object.assign({}, organization);
             // :TODO make a check if nothing was updated
@@ -61,7 +59,6 @@ module.exports = {
 
             organization.set(newValues);
             organization.save().then(() => {
-
 
                 // if (JSON.stringify(oldOrganization) === JSON.stringify(organization)) {
                 //     res.status(400).json("Nothing was updated. Check if the parameters are correct!");
@@ -80,24 +77,24 @@ module.exports = {
         }).catch((err) => {
             res.sendStatus(404);
         })
-    }
-    ,
-    delete:
-        (req, res) => {
-            let id = req.params.organizationId;
+    },
 
-            Organization.deleteOne({_id: id}).then((err) => {
+    delete: (req, res) => {
 
-                if (err.n === 0) {
-                    res.sendStatus(404);
-                } else {
-                    res.sendStatus(204);
-                }
+        let id = req.params.organizationId;
 
-            }).catch((err) => {
-                res.sendStatus(500);
-            })
-        },
+        Organization.deleteOne({_id: id}).then((err) => {
+
+            if (err.n === 0) {
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(204);
+            }
+
+        }).catch((err) => {
+            res.sendStatus(500);
+        })
+    },
     addEventToOrganization: (req, res) => {
         // Retrieve the id
         let id = req.params.organizationId;
