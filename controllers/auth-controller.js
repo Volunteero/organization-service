@@ -32,7 +32,7 @@ module.exports = {
         let token = getToken(req);
 
         client.get("https://volunteero-auth.herokuapp.com/auth/access?accessToken=" + token + "&resource=updateOrganization", (data, response) => {
-
+            // TODO add some extra check here
             if (response) {
                 next();
             } else {
