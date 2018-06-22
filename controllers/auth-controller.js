@@ -13,7 +13,7 @@ module.exports = {
 
         let args = {
             data: {organisationId: organisationId, username: username},
-            headers: { "Content-Type": "application/json" }
+            headers: {"Content-Type": "application/json"}
 
         };
         client.post("https://volunteero-auth.herokuapp.com/internal/organisations/createRole?accessKey=root&secretAccessKey=password", args, (data, response) => {
@@ -32,7 +32,8 @@ module.exports = {
         let token = getToken(req);
 
         client.get("https://volunteero-auth.herokuapp.com/auth/access?accessToken=" + token + "&resource=updateOrganization", (data, response) => {
-
+            // TODO add some extra check here
+            console.log(data);
             if (response) {
                 next();
             } else {

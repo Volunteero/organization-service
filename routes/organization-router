@@ -13,6 +13,11 @@ router.post('/', authController.jwt, organizationController.create);
 
 router.patch('/:organizationId', authController.isAuthorizedToUpdate, organizationController.update);
 
+router.patch('/add-event-to-organization/:organizationId', authController.isAuthorizedToUpdate, organizationController.addEventToOrganization);
+
+router.patch('/add-campaign-to-organization/:organizationId', authController.isAuthorizedToUpdate, organizationController.addCampaignToOrganization);
+
+
 router.delete('/:organizationId', authController.isAuthorizedToDelete, organizationController.delete);
 
 module.exports = router;
