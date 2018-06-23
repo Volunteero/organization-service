@@ -138,6 +138,24 @@ module.exports = {
         else {
             res.status(400).send("You need to have campaign_id in the body")
         }
+    },
+
+    getOrganizationsByUserId: (req, res) => {
+
+        let id = req.params.userId;
+
+
+        Organization.find({user_id: id}).then((result) => {
+
+            if (result.length === 0) {
+                res.status(404).json("Sorry dmitry, you didn't find anything");
+
+            } else {
+                res.status(200).json(result);
+            }
+
+        });
+
     }
 
 };

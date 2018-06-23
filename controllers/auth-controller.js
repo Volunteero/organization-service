@@ -30,10 +30,11 @@ module.exports = {
     isAuthorizedToUpdate: (req, res, next) => {
 
         let token = getToken(req);
+        // console.log(token);
 
         client.get("https://volunteero-auth.herokuapp.com/auth/access?accessToken=" + token + "&resource=updateOrganization", (data, response) => {
             // TODO add some extra check here
-            console.log(data);
+            // console.log(data);
             if (response) {
                 next();
             } else {

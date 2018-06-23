@@ -9,6 +9,8 @@ router.get('/', organizationController.getAll);
 
 router.get('/:organizationId', organizationController.getById);
 
+router.get('/get-organizations-by-user-id/:userId', organizationController.getOrganizationsByUserId);
+
 router.post('/', authController.jwt, organizationController.create);
 
 router.patch('/:organizationId', authController.isAuthorizedToUpdate, organizationController.update);
@@ -19,5 +21,6 @@ router.patch('/add-campaign-to-organization/:organizationId', authController.isA
 
 
 router.delete('/:organizationId', authController.isAuthorizedToDelete, organizationController.delete);
+
 
 module.exports = router;
